@@ -19,7 +19,7 @@ if [ $1 = "backup" ]; then
 	# copying home folders
 	for element in "${home_dirs[@]}"; do
 		echo "Copying ~/${element} to ~/${repo_dir}/home/${element}"
-		cp -r $element ~/${repo_dir}/home/${element}
+		cp -r $element ~/${repo_dir}/home/
 	done
 	
 	cd ~/${config_dir}
@@ -27,13 +27,13 @@ if [ $1 = "backup" ]; then
 	# copying .config folders
 	for element in "${conf_dirs[@]}"; do
 		echo "Copying ~/${config_dir}/${element} to ~/${repo_dir}/home/config/${element}"
-		cp -r $element ~/${repo_dir}/home/config/${element}
+		cp -r $element ~/${repo_dir}/home/config/
 	done
 	
 	# copying .config files
 	for element in "${conf_files[@]}"; do
 		echo "Copying ~/${config_dir}/${element} to ~/${repo_dir}/home/config/${element}"
-		cp $element ~/${repo_dir}/home/config/${element}
+		cp $element ~/${repo_dir}/home/config/
 	done
 
 	cd ~
@@ -41,6 +41,6 @@ if [ $1 = "backup" ]; then
 	# copying folders from root
 	for element in "${root_dirs[@]}"; do
 		echo "Copying ${element} to ~/${repo_dir}/root${element}"
-		cp -r $element ~/${repo_dir}/root${element}
+		cp -r $element ~/${repo_dir}/root/
 	done
 fi
