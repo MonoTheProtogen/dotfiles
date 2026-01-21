@@ -1,3 +1,0 @@
-theme = "custom"
-
-show = ["Distribution","Kernel","WindowManager","Packages","Terminal","Shell"]

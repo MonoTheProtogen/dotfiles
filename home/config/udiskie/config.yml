@@ -1,7 +1,0 @@
-automount: true
-notify: true
-tray: true
-
-mount_options:
-  - id_type: filesystem
-    options: noatime
