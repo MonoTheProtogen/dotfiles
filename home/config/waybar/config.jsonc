@@ -12,7 +12,8 @@
     "modules-left": [
 	"custom/menu",
         "hyprland/workspaces",
-        "hyprland/window"
+        "hyprland/window",
+	"mpris"
     ],
     "modules-center": [
         "clock"
@@ -212,5 +213,14 @@
     },
     "hyprland/language": {
 	    "format": "{short}"
+    },
+    "mpris": {
+	"format": "{status_icon} {dynamic}",
+	"dynamic-order": ["title", "artist"],
+	"status-icons": {
+		"playing": "",
+		"paused": "",
+		"stopped": ""
+	}
     }
 }
