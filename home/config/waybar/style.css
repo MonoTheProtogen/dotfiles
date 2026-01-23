@@ -1,4 +1,5 @@
 @define-color bar-bg #000000;
+@define-color bar-border #454545;
 @define-color text #FFFFFF;
 @define-color accent #33CCFF;
 @define-color accent-secondary #00FF99;
@@ -30,13 +31,21 @@ window#waybar {
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
-    border-radius: 15px;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 2px solid @bar-border;
+    border-left: 2px solid @bar-border;
+    border-right: 2px solid @bar-border;
 }
 
 .modules-left,
 .modules-right,
 .modules-center {
-    padding: 5px 5px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 7px
 }
 
 window#waybar.hidden {
@@ -93,7 +102,7 @@ button:hover {
     background-color: @button-bg;
     padding: 0 10px;
     color: @text;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #window,
@@ -109,36 +118,36 @@ button:hover {
 
 #workspaces {
     background-color: @button-bg;
-    border-radius: 10px
+    border-radius: 5px;
 }
 
 #custom-menu {
     background-color: #0099FF;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: @white;
-    border-radius: 10px
+    border-radius: 5px
 }
 
 #workspaces button:hover {
     background: @button-hover;
-    border-radius: 10px
+    border-radius: 5px
 }
 
 #workspaces button.focused, #workspaces button.active {
     background-color: @focused-workspace;
-    border-radius: 10px;
+    border-radius: 5px;
     color: @accent;
     /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
     background-color: @red;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #mode {
@@ -324,7 +333,7 @@ label:focus {
     color: @accent-secondary;
     padding: 0 10px;
     min-width: 16px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #keyboard-state {
