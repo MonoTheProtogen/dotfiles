@@ -116,15 +116,19 @@ button:hover {
 
 #power {
     background-color: @button-bg;
-    color: @red;
     border-radius: 5px;
-    padding: 0 10px;
+    padding: 0 0px;
 }
 
+#custom-shutdown,
 #custom-reboot,
 #custom-logout,
 #custom-lock {
-    padding-right: 20px;
+    padding: 0 10px;
+}
+
+#custom-shutdown {
+	color: @red;
 }
 
 #custom-reboot {
@@ -154,6 +158,7 @@ button:hover {
 }
 
 #custom-terminal,
+#custom-files,
 #custom-textedit,
 #custom-runner,
 #custom-screenshot,

@@ -104,6 +104,7 @@
 	"modules": [
 		"custom/info",
 		"custom/terminal",
+		"custom/files",
 		"custom/textedit",
 		"custom/runner",
 		"custom/screenshot",
@@ -143,28 +144,35 @@
 	    "format": "󰣇",
 	    "tooltip": true,
 	    "tooltip-format": "System Info",
-	    "on-click": "systemd-run --user --no-block hyprsysteminfo"
+	    "on-click": "systemd-run --user --no-block hyprsysteminfo 7"
     },
 
     "custom/terminal": {
     	"format": "",
 	"tooltip": true,
 	"tooltip-format": "Terminal",
-	"on-click": "systemd-run --user --no-block kitty"
+	"on-click": "systemd-run --user --no-block kitty &"
+    },
+
+    "custom/files": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "File Explorer",
+	"on-click": "systemd-run --user --no-block thunar &"
     },
 
     "custom/textedit": {
 	"format": "",
 	"tooltip": true,
 	"tooltip-format": "Text Editor",
-	"on-click": "systemd-run --user --no-block mousepad"
+	"on-click": "systemd-run --user --no-block mousepad &"
     },
 
     "custom/runner": {
 	"format": "",
 	"tooltip": true,
 	"tooltip-format": "Applications",
-	"on-click": "systemd-run --user --no-block hyprlauncher"
+	"on-click": "systemd-run --user --no-block hyprlauncher &"
     },
 
     "custom/screenshot": {
