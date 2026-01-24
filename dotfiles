@@ -44,9 +44,8 @@ if [ $1 = "backup" ]; then
 		echo "Copying ${element} to ~/${repo_dir}/root${element}"
 		cp -r $element ~/${repo_dir}/root/
 	done
-fi
 
-if [ $1 = "install" ]; then
+elif [ $1 = "install" ]; then
 	cd ~
 	
 	# installing home folders
@@ -71,4 +70,11 @@ if [ $1 = "install" ]; then
 	cd ~
 
 	echo "!!! THIS SCRIPT AVOIDS INSTALLING TO THE ROOT DIRECTORY ON PURPOSE, DON'T FORGET TO COPY THOSE CONFIGS OVER MANUALLY !!!"
+else
+	echo "Usage: dotfiles [arg]"
+	echo
+	echo "Valid arguments:"
+	echo "backup - backs up files from specified directories in the script to the repo"
+	echo "install - copies files from the repo to their respective directories [!!! AVOIDS MODIFYING ROOT DIRS ON PURPOSE !!!]"
+
 fi
