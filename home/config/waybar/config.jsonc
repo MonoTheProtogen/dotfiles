@@ -7,25 +7,29 @@
     //"margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 5, // Gaps between modules (5px)
+    "height": 32,
     // Choose the order of the modules
+    
     "modules-left": [
-	"custom/menu",
+	"group/shortcuts",
         "hyprland/workspaces",
         "hyprland/window",
 	"mpris"
     ],
+    
     "modules-center": [
         "clock"
     ],
+    
     "modules-right": [
-        "idle_inhibitor",
-        "hyprland/language",
-	"power-profiles-daemon",
+	"group/options",
+	"group/keyboard",
 	"backlight",
 	"pulseaudio",
         "tray",
-	"battery"
+	"battery",
+	"group/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -44,6 +48,139 @@
     //         "default": ""
     //     }
     // },
+    
+    "group/keyboard": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "keyboard",
+		"transition-left-to-right": false,
+		"click-to-reveal": false
+	},
+	"modules": [
+		"hyprland/language",
+		"keyboard-state"
+	]
+    },
+    
+    "group/options": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "options",
+		"transition-left-to-right": false,
+		"click-to-reveal": false
+	},
+	"modules": [
+		"power-profiles-daemon",
+		"idle_inhibitor"
+	]
+    },
+
+    "group/power": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "poweropts",
+		"transition-left-to-right": false,
+		"click-to-reveal": false
+	},
+	"modules": [
+		"custom/shutdown",
+		"custom/lock",
+		"custom/logout",
+		"custom/reboot"
+	]
+    },
+
+    "group/shortcuts": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "shortcut",
+		"transition-left-to-right": true,
+		"click-to-reveal": false
+	},
+	"modules": [
+		"custom/info",
+		"custom/terminal",
+		"custom/textedit",
+		"custom/runner",
+		"custom/screenshot",
+		"custom/picker"
+	]
+    },
+
+    "custom/shutdown": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Shutdown",
+	"on-click": "hyprshutdown -t 'Shutting Down' --post-cmd 'shutdown -P 0' &"
+    },
+
+    "custom/reboot": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Reboot",
+	"on-click": "hyprshutdown -t 'Rebooting' --post-cmd 'reboot' &"
+    },
+
+    "custom/logout": {
+	"format": "󰗽",
+	"tooltip": true,
+	"tooltip-format": "Log Out",
+	"on-click": "hyprshutdown -t 'Logging Out' &"
+    },
+
+    "custom/lock": {
+	"format": "󰒲",
+	"tooltip": true,
+	"tooltip-format": "Suspend",
+	"on-click": "systemctl suspend &"
+    },
+
+    "custom/info": {
+	    "format": "󰣇",
+	    "tooltip": true,
+	    "tooltip-format": "System Info",
+	    "on-click": "systemd-run --user --no-block hyprsysteminfo"
+    },
+
+    "custom/terminal": {
+    	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Terminal",
+	"on-click": "systemd-run --user --no-block kitty"
+    },
+
+    "custom/textedit": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Text Editor",
+	"on-click": "systemd-run --user --no-block mousepad"
+    },
+
+    "custom/runner": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Applications",
+	"on-click": "systemd-run --user --no-block hyprlauncher"
+    },
+
+    "custom/screenshot": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Screenshot",
+	"on-click": "hyprshot -m region &"
+    },
+
+    "custom/picker": {
+	"format": "",
+	"tooltip": true,
+	"tooltip-format": "Color Picker",
+	"on-click": "hyprpicker &"
+    },
+
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -61,6 +198,7 @@
 	    "icon": true,
 	    "icon-size": 17
 	},
+    
     "hyprland/workspaces": {
 	//"format": "{icon}",
 	//"format-icons": { 
@@ -69,6 +207,7 @@
 	//	"empty": ""
 	//	}
 	},
+    
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -100,7 +239,9 @@
         "format-icons": {
             "activated": "󰒳",
             "deactivated": "󰒲"
-        }
+        },
+	"tooltip-format-activated": "Caffeine: {status}",
+	"tootlip-format-deactivated": "Caffeine: {status}"
     },
     "tray": {
         // "icon-size": 21,
@@ -147,7 +288,7 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        "format-full": "{capacity}% ",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
