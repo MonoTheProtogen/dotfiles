@@ -59,7 +59,7 @@
 	},
 	"modules": [
 		"hyprland/language",
-		"keyboard-state"
+		"keyboard-state",
 	]
     },
     
@@ -73,7 +73,8 @@
 	},
 	"modules": [
 		"power-profiles-daemon",
-		"idle_inhibitor"
+		"idle_inhibitor",
+		"custom/separator"
 	]
     },
 
@@ -107,9 +108,15 @@
 		"custom/files",
 		"custom/textedit",
 		"custom/runner",
+		"custom/separator",
 		"custom/screenshot",
 		"custom/picker"
 	]
+    },
+
+    "custom/separator": {
+	"format": "|",
+	"tooltip": false
     },
 
     "custom/shutdown": {
@@ -252,8 +259,8 @@
 	"tooltip-format-activated": "Caffeine: {status}"
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
+        //"icon-size": 21,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
