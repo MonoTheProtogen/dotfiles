@@ -1,22 +1,24 @@
 // -*- mode: jsonc -*-
+[
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     //"position": "bottom",
-    // "height": 30, // Waybar height (to be removed for auto height)
+    "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     //"margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
     "spacing": 5, // Gaps between modules (5px)
     "height": 32,
+    "name": "topbar",
     // Choose the order of the modules
     
     "modules-left": [
 	"group/shortcuts",
         "hyprland/workspaces",
-        "hyprland/window",
-	"mpris"
+	"mpris",
+	"hyprland/window"
     ],
     
     "modules-center": [
@@ -449,3 +451,37 @@
 		]
 	}
 }
+//{
+//	"layer": "bottom",
+//	"position": "bottom",
+//	"margin-left": 600,
+//	"margin-right": 600,
+//	"margin-bottom": 200,
+//	"spacing": 5,
+//	"height": 32,
+//
+//	"name": "bottombar",
+//	"exclusive": false,
+//	"modules-left": [
+//
+//	],
+//	"modules-center": [
+//		"cpu",
+//		"memory",
+//		"temperature"
+//	],
+//	"modules-right": [
+//
+//	],
+//
+//	"cpu": {
+//		"format": " {usage}% {avg_frequency}Hz"
+//	},
+//	"memory": {
+//		"format": " {percentage}% 󰓡 {swapPercentage}% "
+//	},
+//	"temperature": {
+//		"format": " {temperatureC}°C"
+//	}
+//}
+]
