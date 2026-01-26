@@ -2,6 +2,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
+    //"position": "bottom",
     // "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     //"margin-top": 10,
@@ -23,13 +24,13 @@
     ],
     
     "modules-right": [
-	"group/options",
+	"privacy",
 	"group/keyboard",
 	"backlight",
 	"pulseaudio",
         "tray",
-	"battery",
-	"group/power"
+	"battery"
+	//"group/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -100,9 +101,10 @@
 		"transition-duration": 300,
 		"children-class": "shortcut",
 		"transition-left-to-right": true,
-		"click-to-reveal": false
+		"click-to-reveal": true
 	},
 	"modules": [
+		"custom/logo",
 		"custom/info",
 		"custom/terminal",
 		"custom/files",
@@ -110,8 +112,36 @@
 		"custom/runner",
 		"custom/separator",
 		"custom/screenshot",
-		"custom/picker"
+		"custom/picker",
+		"custom/separator",
+		"power-profiles-daemon",
+		"idle_inhibitor",
+		"custom/separator",
+		"custom/lock",
+		"custom/logout",
+		"custom/reboot",
+		"custom/shutdown"
 	]
+    },
+
+    "group/backlights": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "brightness",
+		"transition-left-to-right": false,
+		"click-to-reveal": true
+	},
+	"modules": [
+		"backlight",
+		"backlight/slider"
+	]
+    },
+
+    "custom/logo": {
+	    "format": "󰣇",
+	    "tooltip": true,
+	    "tooltip-format": "Shortcuts"
     },
 
     "custom/separator": {
@@ -148,7 +178,7 @@
     },
 
     "custom/info": {
-	    "format": "󰣇",
+	    "format": "",
 	    "tooltip": true,
 	    "tooltip-format": "System Info",
 	    "on-click": "systemd-run --user --no-block hyprsysteminfo 7"
@@ -215,12 +245,12 @@
 	},
     
     "hyprland/workspaces": {
-	//"format": "{icon}",
-	//"format-icons": { 
-	//	"active": "",
-	//	"default": "",
-	//	"empty": ""
-	//	}
+	"format": "{name}",
+	"format-icons": { 
+		"active": "",
+		"default": "",
+		"empty": ""
+		}
 	},
     
     "mpd": {
@@ -292,6 +322,11 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""],
     	"tooltip-format": "Brightness: {percent}% {icon}"
     },
+    "backlight/slider": {
+	    "min": 0,
+	    "max": 100,
+	    "orientation": "horizontal"
+    },
     "battery": {
         "states": {
             // "good": 95,
@@ -334,7 +369,7 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -379,5 +414,38 @@
 		"paused": "",
 		"stopped": ""
 	}
-    }
+    },
+    "privacy": {
+	"icon-spacing": 4,
+	"icon-size": 18,
+	"transition-duration": 250,
+	"modules": [
+		{
+			"type": "screenshare",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		},
+		{
+			"type": "audio-out",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		},
+		{
+			"type": "audio-in",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		}
+	],
+	"ignore-monitor": true,
+	"ignore": [
+			{
+			"type": "audio-in",
+			"name": "cava"
+			},
+			{
+			"type": "screenshare",
+			"name": "obs"
+			}
+		]
+	}
 }
