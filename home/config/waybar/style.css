@@ -36,14 +36,14 @@ window#waybar {
     
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-bottom: 2px solid @bar-border;
+    /* border-bottom: 2px solid @bar-border; */
     
     /* border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-top: 2px solid @bar-border; */
 
-    border-left: 2px solid @bar-border;
-    border-right: 2px solid @bar-border;
+    /* border-left: 2px solid @bar-border;
+    border-right: 2px solid @bar-border; */
 }
 
 window#waybar.bottombar {
@@ -66,10 +66,10 @@ window#waybar.bottombar {
 .modules-left,
 .modules-right,
 .modules-center {
-    padding-top: 5px;
-    padding-bottom: 7px;
-    padding-left: 7px;
-    padding-right: 7px
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px
 }
 
 window#waybar.hidden {
@@ -139,19 +139,19 @@ button:hover {
     background-color: @button-bg;
     padding: 0 10px;
     color: @text;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #keyboard {
 	background-color: @button-bg;
 	color: @text;
-	border-radius: 5px;
+	border-radius: 8px;
 	padding: 0 0px;
 }
 
 #power {
     background-color: @button-bg;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 0 0px;
 }
 
@@ -181,20 +181,20 @@ button:hover {
 #shortcuts {
 	background-color: @button-bg;
 	color: @white;
-	border-radius: 5px;
+	border-radius: 8px;
 	padding: 0 0px;
 }
 
 #custom-logo {
 	background-color: @logo;
-	border-radius: 5px;
+	border-radius: 8px;
 	color: @white;
 	padding: 0 10px;
 }
 
 #custom-info {
 	background-color: @button-bg;
-	border-radius: 5px;
+	border-radius: 8px;
 	color: white;
 	padding: 0 10px;
 }
@@ -202,7 +202,7 @@ button:hover {
 #backlights {
 	background-color: @button-bg;
 	padding: 0 0px;
-	border-radius: 5px;
+	border-radius: 8px;
 	color: @white;
 }
 
@@ -233,31 +233,31 @@ button:hover {
 #pulseaudio:hover,
 #custom-info:hover {
 	background-color: @button-hover;
-	border-radius: 5px;
+	border-radius: 8px;
 	transition-property: background-color;
 	transition-duration: 0.3s;
 }
 
 #custom-shutdown:hover {
-	border-radius: 5px;
+	border-radius: 8px;
 	background-color: @red;
 	color: @black;
 	transition-duration: 0.3s;
 }
 #custom-reboot:hover {
-	border-radius: 5px;
+	border-radius: 8px;
 	background-color: @yellow;
 	color: @black;
 	transition-duration: 0.3s;
 }
 #custom-logout:hover {
-	border-radius: 5px;
+	border-radius: 8px;
 	background-color: @green;
 	color: @black;
 	transition-duration: 0.3s;
 }
 #custom-lock:hover {
-	border-radius: 5px;
+	border-radius: 8px;
 	background-color: @blue;
 	color: @black;
 	transition-duration: 0.3s;
@@ -265,14 +265,14 @@ button:hover {
 
 #custom-logo:hover {
 	background-color: @accent;
-	border-radius: 5px;
+	border-radius: 8px;
 	transition-property: background-color;
 	transition-duration: 0.3s;
 }
 
 #options {
 	background-color: @button-bg;
-	border-radius: 5px;
+	border-radius: 8px;
 }
 
 #window,
@@ -288,12 +288,12 @@ button:hover {
 
 #workspaces {
     background-color: @button-bg;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #custom-menu {
     background-color: @logo;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #workspaces button {
@@ -310,14 +310,14 @@ button:hover {
 
 #workspaces button.focused, #workspaces button.active {
     background-color: @focused-workspace;
-    border-radius: 5px;
+    border-radius: 8px;
     color: @accent;
     /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
     background-color: @red;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #mode {
@@ -500,7 +500,7 @@ label:focus {
     color: @accent-secondary;
     padding: 0 10px;
     min-width: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #keyboard-state {
@@ -513,13 +513,13 @@ label:focus {
 
 #keyboard-state > label {
     padding: 0 5px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #keyboard-state > label.locked {
     background: @red;
     color: @black;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #scratchpad {
@@ -532,26 +532,26 @@ label:focus {
 
 #privacy {
     padding: 0;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #privacy-item {
     padding: 0 5px;
     color: @white;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #privacy-item.screenshare {
     background-color: @orange;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #privacy-item.audio-in {
     background-color: @green;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 #privacy-item.audio-out {
     background-color: @blue;
-    border-radius: 5px;
+    border-radius: 8px;
 }
