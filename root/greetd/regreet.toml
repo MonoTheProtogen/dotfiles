@@ -8,10 +8,10 @@ fit = "Cover"
 
 [GTK]
 application_prefer_dark_theme = true
-# theme_name = "Arc-Dark"
+theme_name = "Arc-Dark"
 # theme_name = "hyprtheme"
 # theme_name = "Materia"
-theme_name = "Vimix-dark-compact-doder"
+# theme_name = "Vimix-dark-compact-doder"
 icon_theme_name = "Papirus-Dark"
 cursor_theme_name = "Adwaita"
 font_name = "ProFont IIx Nerd Font Mono"
