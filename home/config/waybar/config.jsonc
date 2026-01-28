@@ -5,7 +5,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     //"position": "bottom",
     "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    // "width": 32, // Waybar width
     //"margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
@@ -98,7 +98,7 @@
     },
 
     "group/shortcuts": {
-	"orientation": "horizontal",
+	"orientation": "inherit",
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "shortcut",
