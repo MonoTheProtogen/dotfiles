@@ -34,9 +34,8 @@ window#waybar {
     transition-duration: .5s;
     /* border-radius: 10px; */
     
-    /*border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; */
-    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     /* border-bottom: 2px solid @bar-border; */
     
     /* border-top-left-radius: 10px;
@@ -71,14 +70,6 @@ window#waybar.bottombar {
     padding-bottom: 5px;
     padding-left: 5px;
     padding-right: 5px
-}
-
-.modules-left {
-    padding-left: 10px;
-}
-
-.modules-right {
-    padding-right: 10px;
 }
 
 window#waybar.hidden {

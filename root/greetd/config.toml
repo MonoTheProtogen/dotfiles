@@ -8,9 +8,18 @@ vt = 1
 
 # `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
 # with whatever you want started, such as `sway`.
-command = "start-hyprland -- --config /etc/greetd/hyprland.conf"
+
+# Start with Hyprland and Regreet
+# command = "start-hyprland -- --config /etc/greetd/hyprland.conf"
+
+# Start with Sway and Regreet (doesn't work rn)
+# comman = "sway --config /etc/greetd/sway-config"
+
+# Start with Hyprland and nwg-hello
+command = "start-hyprland -- --config /etc/nwg-hello/hyprland.conf"
 
 # The user to run the command as. The privileges this user must have depends
 # on the greeter. A graphical greeter may for example require the user to be
 # in the `video` group.
 user = "greeter"
+

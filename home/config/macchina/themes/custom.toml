@@ -19,7 +19,7 @@ hide_delimiters = true
 visible         = true
 
 [box]
-border          = "rounded"
+border          = "plain"
 visible         = true
 title = " 󰣇 Mono's Thinkpad "
 
