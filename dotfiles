@@ -8,7 +8,7 @@ home_dirs=("Templates")
 
 # config directory items
 config_dir=".config"
-conf_dirs=("ags" "dunst" "hypr" "kitty" "lf" "macchina" "udiskie" "waybar")
+conf_dirs=("ags" "dunst" "hypr" "kitty" "lf" "macchina" "udiskie" "waybar" "labwc" "niri" "river" "sway" "wayfire")
 conf_files=("background")
 
 # root directory items
