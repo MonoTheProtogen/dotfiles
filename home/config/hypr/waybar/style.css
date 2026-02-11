@@ -20,7 +20,7 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: 'Lilex Nerd Font Mono', FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Lilex Nerd Font Propo', FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 17px;
 }
 
@@ -36,14 +36,22 @@ window#waybar {
     
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    /* border-bottom: 2px solid @bar-border; */
+    
+    /* border-bottom: 2px solid @bar-border;
+    border-left: 2px solid @bar-border;
+    border-right: 2px solid @bar-border; */
+
+    /* border-bottom: 2px solid @accent;
+    border-left: 2px solid @accent;
+    border-right: 2px solid @accent; */
+
+    /* border-bottom: 2px solid alpha(@bar-bg, 0.8);
+    border-left: 2px solid alpha(@bar-bg, 0.8);
+    border-right: 2px solid alpha(@bar-bg, 0.8); */
     
     /* border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-top: 2px solid @bar-border; */
-
-    /* border-left: 2px solid @bar-border;
-    border-right: 2px solid @bar-border; */
 }
 
 window#waybar.bottombar {
@@ -197,6 +205,20 @@ button:hover {
 	border-radius: 5px;
 	color: white;
 	padding: 0 10px;
+}
+
+#custom-updates {
+	background-color: @button-bg;
+	border-radius: 5px;
+	color: @green;
+	padding: 0 10px;
+}
+
+#custom-updates:hover {
+	background-color: @button-hover;
+	transition-property: background-color;
+	transition-duration: 0.3s;
+	border-radius: 5px;
 }
 
 #backlights {

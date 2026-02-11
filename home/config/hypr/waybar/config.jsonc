@@ -27,6 +27,7 @@
     
     "modules-right": [
 	"privacy",
+	"custom/updates",
 	"group/keyboard",
 	"backlight",
 	"pulseaudio",
@@ -140,6 +141,15 @@
 	]
     },
 
+    "custom/updates": {
+	"format": "󰏔 {}",
+	"exec": "paru -Quq | wc -l",
+	"interval": 300, // 5 minutes
+	"on-click": "systemd-run --user --no-block kitty --hold paru &",
+	"tooltip": true,
+	"tooltip-format": "Updates"
+    },
+
     "custom/logo": {
 	    "format": "󰣇",
 	    "tooltip": true,
@@ -183,7 +193,7 @@
 	    "format": "",
 	    "tooltip": true,
 	    "tooltip-format": "System Info",
-	    "on-click": "systemd-run --user --no-block hyprsysteminfo 7"
+	    "on-click": "systemd-run --user --no-block hyprsysteminfo &"
     },
 
     "custom/terminal": {
