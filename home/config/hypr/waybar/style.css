@@ -124,6 +124,26 @@ button:hover {
     background-color: @button-hover;
 }
 
+menu {
+	background-color: alpha(@bar-bg, 0.7);
+	border: 2px @accent solid;
+	border-radius: 10px;
+	color: white;
+}
+
+menuitem {
+	background-color: alpha(white, 0.0);
+	border-radius: 5px;
+	color: white;
+	margin: 2px 10px;
+}
+
+menuitem:hover {
+	border-radius: 5px;
+	transition-property: background-color;
+	background-color: @blue;
+}
+
 #clock,
 #battery,
 #cpu,

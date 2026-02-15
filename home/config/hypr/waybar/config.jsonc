@@ -1,5 +1,4 @@
 // -*- mode: jsonc -*-
-[
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
@@ -16,9 +15,10 @@
     
     "modules-left": [
 	"group/shortcuts",
-        "hyprland/workspaces",
-	"mpris",
-	"hyprland/window"
+	//"custom/menu",
+	"hyprland/workspaces",
+	"hyprland/window",
+	"mpris"
     ],
     
     "modules-center": [
@@ -31,9 +31,10 @@
 	"group/keyboard",
 	"backlight",
 	"pulseaudio",
+	"group/options",
         "tray",
-	"battery"
-	//"group/power"
+	"battery",
+	"group/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -63,7 +64,22 @@
 	},
 	"modules": [
 		"hyprland/language",
-		"keyboard-state",
+		"keyboard-state"
+	]
+    },
+
+    "group/battery": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 300,
+		"children-class": "battery",
+		"transition-left-to-right": false,
+		"click-to-reveal": false
+	},
+	"modules": [
+		"battery",
+		"idle_inhibitor",
+		"power-profiles-daemon"
 	]
     },
     
@@ -77,8 +93,7 @@
 	},
 	"modules": [
 		"power-profiles-daemon",
-		"idle_inhibitor",
-		"custom/separator"
+		"idle_inhibitor"
 	]
     },
 
@@ -115,15 +130,16 @@
 		"custom/runner",
 		"custom/separator",
 		"custom/screenshot",
-		"custom/picker",
-		"custom/separator",
-		"power-profiles-daemon",
-		"idle_inhibitor",
-		"custom/separator",
-		"custom/lock",
-		"custom/logout",
-		"custom/reboot",
-		"custom/shutdown"
+		"custom/picker"
+		//"custom/separator",
+		//"power-profiles-daemon",
+		//"idle_inhibitor",
+		//"custom/separator",
+		//"custom/lock",
+		//"custom/logout",
+		//"custom/reboot",
+		//"custom/shutdown"
+		//"custom/wlogout"
 	]
     },
 
@@ -143,11 +159,19 @@
 
     "custom/updates": {
 	"format": "󰏔 {}",
-	"exec": "paru -Quq | wc -l",
+	"exec": "u=$(paru -Quq | wc -l); ((u)) && echo $u",
 	"interval": 300, // 5 minutes
 	"on-click": "systemd-run --user --no-block kitty --hold paru &",
 	"tooltip": true,
-	"tooltip-format": "Updates"
+	"tooltip-format": "Updates",
+	"hide-empty-text": true
+    },
+	
+    "custom/wlogout": {
+	    "format": "",
+	    "tooltip": true,
+	    "tooltip-format": "Power",
+	    "on-click": "wlogout &"
     },
 
     "custom/logo": {
@@ -330,8 +354,9 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        //"format": "{percent}% {icon}",
+        "format": "{icon}",
+	"format-icons": ["", "", "", "", "", "", "", "", ""],
     	"tooltip-format": "Brightness: {percent}% {icon}"
     },
     "backlight/slider": {
@@ -345,14 +370,18 @@
             "warning": 30,
             "critical": 15
         },
+        //"format": "{capacity}% {icon}",
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+	//"format-charging": "{capacity}% ",
+        "format-charging": "",
+	//"format-plugged": "{capacity}% ",
+        "format-plugged": "",
+	//"format-full": "{capacity}% ",
+	"format-full": "",
+	"format-alt": "{time} {percentage}% {icon}",
         // "format-good": "", // An empty format will hide the module
-        "format-full": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+	"tooltip-format": "{timeTo} | {capacity}% | {power}W"
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -379,12 +408,15 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        //"format": "{volume}% {icon} {format_source}",
+        "format": "{icon} {format_source}",
+	//"format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{icon} {format_source}",
+	"format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        //"format-source": "{volume}% ",
+        "format-source": "",
+	"format-source-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -394,7 +426,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "hyprpwcenter"
+        "on-click": "hyprpwcenter",
+	"tooltip-format": "{volume}% {icon}"
     },
     "custom/menu": {
         "format" : " 󰣇 ",
@@ -461,37 +494,3 @@
 		]
 	}
 }
-//{
-//	"layer": "bottom",
-//	"position": "bottom",
-//	"margin-left": 600,
-//	"margin-right": 600,
-//	"margin-bottom": 200,
-//	"spacing": 5,
-//	"height": 32,
-//
-//	"name": "bottombar",
-//	"exclusive": false,
-//	"modules-left": [
-//
-//	],
-//	"modules-center": [
-//		"cpu",
-//		"memory",
-//		"temperature"
-//	],
-//	"modules-right": [
-//
-//	],
-//
-//	"cpu": {
-//		"format": " {usage}% {avg_frequency}Hz"
-//	},
-//	"memory": {
-//		"format": " {percentage}% 󰓡 {swapPercentage}% "
-//	},
-//	"temperature": {
-//		"format": " {temperatureC}°C"
-//	}
-//}
-]

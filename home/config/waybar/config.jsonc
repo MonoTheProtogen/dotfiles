@@ -1,38 +1,37 @@
 // -*- mode: jsonc -*-
-[
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    //"position": "bottom",
-    "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 32, // Waybar width
-    //"margin-top": 10,
-    //"margin-left": 10,
-    //"margin-right": 10,
-    "spacing": 5, // Gaps between modules (5px)
-    "height": 32,
-    "name": "topbar",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    
     "modules-left": [
-	"group/shortcuts",
-        "hyprland/workspaces",
-	"mpris",
-	"hyprland/window"
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad",
+        "custom/media"
     ],
-    
     "modules-center": [
-        "clock"
+        "sway/window"
     ],
-    
     "modules-right": [
-	"privacy",
-	"group/keyboard",
-	"backlight",
-	"pulseaudio",
+        "mpd",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "keyboard-state",
+        "sway/language",
+        "battery",
+        "battery#bat2",
+        "clock",
         "tray",
-	"battery"
-	//"group/power"
+        "custom/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -51,183 +50,6 @@
     //         "default": ""
     //     }
     // },
-    
-    "group/keyboard": {
-	"orientation": "horizontal",
-	"drawer": {
-		"transition-duration": 300,
-		"children-class": "keyboard",
-		"transition-left-to-right": false,
-		"click-to-reveal": false
-	},
-	"modules": [
-		"hyprland/language",
-		"keyboard-state",
-	]
-    },
-    
-    "group/options": {
-	"orientation": "horizontal",
-	"drawer": {
-		"transition-duration": 300,
-		"children-class": "options",
-		"transition-left-to-right": false,
-		"click-to-reveal": false
-	},
-	"modules": [
-		"power-profiles-daemon",
-		"idle_inhibitor",
-		"custom/separator"
-	]
-    },
-
-    "group/power": {
-	"orientation": "horizontal",
-	"drawer": {
-		"transition-duration": 300,
-		"children-class": "poweropts",
-		"transition-left-to-right": false,
-		"click-to-reveal": false
-	},
-	"modules": [
-		"custom/shutdown",
-		"custom/lock",
-		"custom/logout",
-		"custom/reboot"
-	]
-    },
-
-    "group/shortcuts": {
-	"orientation": "inherit",
-	"drawer": {
-		"transition-duration": 300,
-		"children-class": "shortcut",
-		"transition-left-to-right": true,
-		"click-to-reveal": true
-	},
-	"modules": [
-		"custom/logo",
-		"custom/info",
-		"custom/terminal",
-		"custom/files",
-		"custom/textedit",
-		"custom/runner",
-		"custom/separator",
-		"custom/screenshot",
-		"custom/picker",
-		"custom/separator",
-		"power-profiles-daemon",
-		"idle_inhibitor",
-		"custom/separator",
-		"custom/lock",
-		"custom/logout",
-		"custom/reboot",
-		"custom/shutdown"
-	]
-    },
-
-    "group/backlights": {
-	"orientation": "horizontal",
-	"drawer": {
-		"transition-duration": 300,
-		"children-class": "brightness",
-		"transition-left-to-right": false,
-		"click-to-reveal": true
-	},
-	"modules": [
-		"backlight",
-		"backlight/slider"
-	]
-    },
-
-    "custom/logo": {
-	    "format": "󰣇",
-	    "tooltip": true,
-	    "tooltip-format": "Shortcuts"
-    },
-
-    "custom/separator": {
-	"format": "|",
-	"tooltip": false
-    },
-
-    "custom/shutdown": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Shutdown",
-	"on-click": "hyprshutdown -t 'Shutting Down' --post-cmd 'shutdown -P 0' &"
-    },
-
-    "custom/reboot": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Reboot",
-	"on-click": "hyprshutdown -t 'Rebooting' --post-cmd 'reboot' &"
-    },
-
-    "custom/logout": {
-	"format": "󰗽",
-	"tooltip": true,
-	"tooltip-format": "Log Out",
-	"on-click": "hyprshutdown -t 'Logging Out' &"
-    },
-
-    "custom/lock": {
-	"format": "󰒲",
-	"tooltip": true,
-	"tooltip-format": "Suspend",
-	"on-click": "systemctl suspend &"
-    },
-
-    "custom/info": {
-	    "format": "",
-	    "tooltip": true,
-	    "tooltip-format": "System Info",
-	    "on-click": "systemd-run --user --no-block hyprsysteminfo 7"
-    },
-
-    "custom/terminal": {
-    	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Terminal",
-	"on-click": "systemd-run --user --no-block kitty &"
-    },
-
-    "custom/files": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "File Explorer",
-	"on-click": "systemd-run --user --no-block thunar &"
-    },
-
-    "custom/textedit": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Text Editor",
-	"on-click": "systemd-run --user --no-block mousepad &"
-    },
-
-    "custom/runner": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Applications",
-	"on-click": "systemd-run --user --no-block hyprlauncher &"
-    },
-
-    "custom/screenshot": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Screenshot",
-	"on-click": "hyprshot -m region &"
-    },
-
-    "custom/picker": {
-	"format": "",
-	"tooltip": true,
-	"tooltip-format": "Color Picker",
-	"on-click": "hyprpicker &"
-    },
-
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -237,24 +59,16 @@
             "unlocked": ""
         }
     },
-    "hyprland/window": {
-	    "format": "{class}",
-	    "rewrite": {
-		    "^$": " Desktop"
-	    },
-	    "icon": true,
-	    "icon-size": 17
-	},
-    
-    "hyprland/workspaces": {
-	"format": "{name}",
-	"format-icons": { 
-		"active": "",
-		"default": "",
-		"empty": ""
-		}
-	},
-    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -284,15 +98,13 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "󰒳",
-            "deactivated": "󰒲"
-        },
-	"tooltip-format-deactivated": "Caffeine: {status}",
-	"tooltip-format-activated": "Caffeine: {status}"
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "tray": {
-        //"icon-size": 21,
-        "spacing": 10
+        // "icon-size": 21,
+        "spacing": 10,
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -321,13 +133,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-    	"tooltip-format": "Brightness: {percent}% {icon}"
-    },
-    "backlight/slider": {
-	    "min": 0,
-	    "max": 100,
-	    "orientation": "horizontal"
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -337,11 +143,11 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
-        "format-full": "{capacity}% ",
+        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
@@ -352,10 +158,10 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "󰾅",
-        "performance": "󰓅",
-        "balanced": "󰾅",
-        "power-saver": "󰾆"
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
       }
     },
     "network": {
@@ -371,117 +177,43 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "hyprpwcenter"
+        "on-click": "pavucontrol"
     },
-    "custom/menu": {
-        "format" : " 󰣇 ",
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/power": {
+        "format" : "⏻ ",
 		"tooltip": false,
 		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/custom-modules/menu.xml", // Menu file in resources folder
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"appmenu": "systemd-run --user --no-block hyprlauncher",
-			"terminal": "systemd-run --user --no-block kitty",
-			"fileman": "systemd-run --user --no-block thunar",
-			"textedit": "systemd-run --user --no-block mousepad",
-			"sysinfo": "systemd-run --user --no-block hyprsysteminfo",
-			"screenshot": "hyprshot -m region &",
-			"picker": "hyprpicker &",
-			"shutdown": "hyprshutdown -t 'Shutting Down' --post-cmd 'shutdown -P 0' &",
-			"reboot": "hyprshutdown -t 'Rebooting' --post-cmd 'reboot' &",
-			"suspend": "systemctl suspend &",
-			"logout": "hyprshutdown &"
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
 		}
-    },
-    "hyprland/language": {
-	    "format": "{short}"
-    },
-    "mpris": {
-	"format": "{status_icon} {dynamic}",
-	"dynamic-order": ["title", "artist"],
-	"status-icons": {
-		"playing": "",
-		"paused": "",
-		"stopped": ""
-	}
-    },
-    "privacy": {
-	"icon-spacing": 4,
-	"icon-size": 18,
-	"transition-duration": 250,
-	"modules": [
-		{
-			"type": "screenshare",
-			"tooltip": true,
-			"tooltip-icon-size": 24
-		},
-		{
-			"type": "audio-out",
-			"tooltip": true,
-			"tooltip-icon-size": 24
-		},
-		{
-			"type": "audio-in",
-			"tooltip": true,
-			"tooltip-icon-size": 24
-		}
-	],
-	"ignore-monitor": true,
-	"ignore": [
-			{
-			"type": "audio-in",
-			"name": "cava"
-			},
-			{
-			"type": "screenshare",
-			"name": "obs"
-			}
-		]
-	}
+    }
 }
-//{
-//	"layer": "bottom",
-//	"position": "bottom",
-//	"margin-left": 600,
-//	"margin-right": 600,
-//	"margin-bottom": 200,
-//	"spacing": 5,
-//	"height": 32,
-//
-//	"name": "bottombar",
-//	"exclusive": false,
-//	"modules-left": [
-//
-//	],
-//	"modules-center": [
-//		"cpu",
-//		"memory",
-//		"temperature"
-//	],
-//	"modules-right": [
-//
-//	],
-//
-//	"cpu": {
-//		"format": " {usage}% {avg_frequency}Hz"
-//	},
-//	"memory": {
-//		"format": " {percentage}% 󰓡 {swapPercentage}% "
-//	},
-//	"temperature": {
-//		"format": " {temperatureC}°C"
-//	}
-//}
-]

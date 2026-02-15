@@ -5,6 +5,7 @@ repo_dir="dotfiles"
 
 # home directories
 home_dirs=("Templates")
+home_files=(".sysupdate.sh")
 
 # config directory items
 config_dir=".config"
@@ -21,6 +22,12 @@ if [ $1 = "backup" ]; then
 	for element in "${home_dirs[@]}"; do
 		echo "Copying ~/${element} to ~/${repo_dir}/home/${element}"
 		cp -r $element ~/${repo_dir}/home/
+	done
+
+	# copying home files
+	for element in "${home_files[@]}"; do
+		echo "Copying ~/${element} to ~/${repo_dir}/home/${element}"
+		cp $element ~/${repo_dir}/home/
 	done
 	
 	cd ~/${config_dir}
@@ -49,13 +56,20 @@ elif [ $1 = "install" ]; then
 	cd ~
 	
 	# installing home folders
-	cd $config_dir
         for element in "${home_dirs[@]}"; do
-		echo "Copying ~/${repo_dir}/home/${element} to ~${element}"
+		echo "Copying ~/${repo_dir}/home/${element} to ~/${element}"
 		cp -r ~/${repo_dir}/home/${element} ~/
+	done
+	
+	# installing home files
+	for element in "${home_files[@]}"; do
+		echo "Copying ~/${repo_dir}/home/${element} to ~/${element}"
+		cp ~/${repo_dir}/home/${element} ~/
 	done
 
 	# installing home config folders
+	cd $config_dir
+	
 	for element in "${conf_dirs[@]}"; do
 		echo "Copying ~/${repo_dir}/home/config/${element} to ~/${config_dir}/${element}"
 		cp -r ~/${repo_dir}/home/config/${element} ~/${config_dir}/
