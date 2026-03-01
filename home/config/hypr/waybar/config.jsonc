@@ -1,40 +1,43 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "left", // Waybar position (top|bottom|left|right)
     //"position": "bottom",
-    "height": 32, // Waybar height (to be removed for auto height)
+    //"height": 32, // Waybar height (to be removed for auto height)
     // "width": 32, // Waybar width
     //"margin-top": 10,
-    "margin-left": 10,
-    "margin-right": 10,
+    //"margin-left": 10,
+    //"margin-right": 10,
     "spacing": 5, // Gaps between modules (5px)
-    "height": 32,
+    /* "height": 32,*/ 
+    "width": 32,
     "name": "topbar",
     // Choose the order of the modules
     
     "modules-left": [
-	"group/shortcuts",
-	//"custom/menu",
+	//"group/shortcuts",
+	"custom/menu",
+	"clock",
 	"hyprland/workspaces",
 	"hyprland/window",
 	"mpris"
     ],
     
     "modules-center": [
-        "clock"
+        
     ],
     
     "modules-right": [
 	"privacy",
 	"custom/updates",
-	"group/keyboard",
+	//"group/keyboard",
+	"hyprland/language",
 	"backlight",
 	"pulseaudio",
 	"group/options",
         "tray",
-	"battery",
-	"group/power"
+	"battery"
+	//"group/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -55,7 +58,9 @@
     // },
     
     "group/keyboard": {
-	"orientation": "horizontal",
+	//"orientation": "horizontal",
+	"orientation": "inherit",
+	"rotate": 90,
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "keyboard",
@@ -69,7 +74,8 @@
     },
 
     "group/battery": {
-	"orientation": "horizontal",
+	//"orientation": "horizontal",
+	"orientation": "inherit",
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "battery",
@@ -84,7 +90,7 @@
     },
     
     "group/options": {
-	"orientation": "horizontal",
+	"orientation": "inherit",
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "options",
@@ -98,7 +104,7 @@
     },
 
     "group/power": {
-	"orientation": "horizontal",
+	"orientation": "inherit",
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "poweropts",
@@ -144,7 +150,7 @@
     },
 
     "group/backlights": {
-	"orientation": "horizontal",
+	"orientation": "inherit",
 	"drawer": {
 		"transition-duration": 300,
 		"children-class": "brightness",
@@ -158,10 +164,11 @@
     },
 
     "custom/updates": {
+	"rotate": 90,
 	"format": "󰏔 {}",
 	"exec": "u=$(paru -Quq | wc -l); ((u)) && echo $u",
 	"interval": 300, // 5 minutes
-	"on-click": "systemd-run --user --no-block kitty --hold paru &",
+	"on-click": "systemd-run --user --no-block kitty ~/.sysupdate.sh &",
 	"tooltip": true,
 	"tooltip-format": "Updates",
 	"hide-empty-text": true
@@ -182,7 +189,8 @@
 
     "custom/separator": {
 	"format": "|",
-	"tooltip": false
+	"tooltip": false,
+	"rotate": 90
     },
 
     "custom/shutdown": {
@@ -263,6 +271,7 @@
     },
 
     "keyboard-state": {
+	"rotate": 90,
         "numlock": true,
         "capslock": true,
         "format": "{name} {icon}",
@@ -277,7 +286,8 @@
 		    "^$": " Desktop"
 	    },
 	    "icon": true,
-	    "icon-size": 17
+	    "icon-size": 17,
+	    "rotate": 90
 	},
     
     "hyprland/workspaces": {
@@ -335,7 +345,8 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+	"rotate": 90
     },
     "cpu": {
         "format": "{usage}% ",
@@ -365,13 +376,14 @@
 	    "orientation": "horizontal"
     },
     "battery": {
+	"rotate": 90,
         "states": {
             // "good": 95,
             "warning": 30,
             "critical": 15
         },
         //"format": "{capacity}% {icon}",
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
 	//"format-charging": "{capacity}% ",
         "format-charging": "",
 	//"format-plugged": "{capacity}% ",
@@ -407,6 +419,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
+	"rotate": 90,
         // "scroll-step": 1, // %, can be a float
         //"format": "{volume}% {icon} {format_source}",
         "format": "{icon} {format_source}",
@@ -461,6 +474,7 @@
 	}
     },
     "privacy": {
+	"rotate": 90,
 	"icon-spacing": 4,
 	"icon-size": 18,
 	"transition-duration": 250,

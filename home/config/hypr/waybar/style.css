@@ -1,8 +1,8 @@
 @define-color bar-bg #000000;
 @define-color bar-border #454545;
 @define-color text #FFFFFF;
-@define-color accent #33CCFF;
-@define-color accent-secondary #00FF99;
+@define-color accent #FF0056;
+@define-color accent-secondary #CC0023;
 @define-color button-bg #252525;
 @define-color button-hover #454545;
 @define-color focused-workspace #454545;
@@ -34,8 +34,8 @@ window#waybar {
     transition-duration: .5s;
     /* border-radius: 10px; */
     
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /*border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;*/
     
     /* border-bottom: 2px solid @bar-border;
     border-left: 2px solid @bar-border;
@@ -141,7 +141,7 @@ menuitem {
 menuitem:hover {
 	border-radius: 5px;
 	transition-property: background-color;
-	background-color: @blue;
+	background-color: @accent;
 }
 
 #clock,
@@ -165,7 +165,7 @@ menuitem:hover {
 #keyboard-state,
 #load {
     background-color: @button-bg;
-    padding: 0 10px;
+    padding: 5px 5px;
     color: @text;
     border-radius: 5px;
 }
@@ -187,7 +187,7 @@ menuitem:hover {
 #custom-reboot,
 #custom-logout,
 #custom-lock {
-    padding: 0 10px;
+    padding: 5px 5px;
 }
 
 #custom-shutdown {
@@ -214,24 +214,24 @@ menuitem:hover {
 }
 
 #custom-logo {
-	background-color: @logo;
+	background-color: @accent;
 	border-radius: 5px;
 	color: @white;
-	padding: 0 10px;
+	padding: 5px 5px;
 }
 
 #custom-info {
 	background-color: @button-bg;
 	border-radius: 5px;
 	color: white;
-	padding: 0 10px;
+	padding: 5px 5px;
 }
 
 #custom-updates {
 	background-color: @button-bg;
 	border-radius: 5px;
 	color: @green;
-	padding: 0 10px;
+	padding: 5px 5px;
 }
 
 #custom-updates:hover {
@@ -259,7 +259,7 @@ menuitem:hover {
 #custom-screenshot,
 #custom-picker,
 #custom-info {
-	padding: 0 10px;
+	padding: 5px 5px;
 }
 
 #custom-terminal:hover,
@@ -334,12 +334,13 @@ menuitem:hover {
 }
 
 #custom-menu {
-    background-color: @logo;
+    background-color: @accent;
     border-radius: 5px;
+    padding: 5px 0;
 }
 
 #workspaces button {
-    padding: 0 7px;
+    padding: 5px 0;
     background-color: transparent;
     color: @white;
     border-radius: 5px
@@ -386,7 +387,8 @@ menuitem:hover {
 
 #battery {
     background-color: @button-bg;
-    color: @blue;
+    color: @accent;
+    padding: 7px 0;
 }
 
 #battery.charging, #battery.plugged {
@@ -459,7 +461,7 @@ label:focus {
 
 #pulseaudio {
     background-color: @button-bg;
-    color: @cyan;
+    color: @red;
 }
 
 #pulseaudio.muted {
@@ -540,7 +542,7 @@ label:focus {
 #language {
     background: @button-bg;
     color: @accent-secondary;
-    padding: 0 10px;
+    padding: 5px 5px;
     min-width: 16px;
     border-radius: 5px;
 }
@@ -554,7 +556,7 @@ label:focus {
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
+    padding: 5px 5px;
     border-radius: 5px;
 }
 
@@ -578,7 +580,7 @@ label:focus {
 }
 
 #privacy-item {
-    padding: 0 5px;
+    padding: 5px 5px;
     color: @white;
     border-radius: 5px;
 }
