@@ -5,11 +5,11 @@ repo_dir="dotfiles"
 
 # home directories
 home_dirs=("Templates")
-home_files=(".sysupdate.sh")
+home_files=(".sysupdate.sh" ".profile")
 
 # config directory items
 config_dir=".config"
-conf_dirs=("ags" "dunst" "hypr" "kitty" "lf" "macchina" "udiskie" "waybar" "labwc" "niri" "river" "sway" "wayfire")
+conf_dirs=("ags" "dunst" "hypr" "kitty" "lf" "macchina" "udiskie" "waybar" "niri")
 conf_files=("background")
 
 # root directory items

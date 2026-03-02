@@ -1,0 +1,3 @@
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_ICON_THEME=Papirus
+export ICON_THEME=Papirus
